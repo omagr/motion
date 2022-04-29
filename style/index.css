@@ -1,0 +1,245 @@
+body {
+  background-color: #121212;
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+}
+
+.sidebar {
+  background-color: #1c1c1c;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 0.5rem 1rem;
+}
+
+.sidebar .sidebar_name {
+  font-size: 1.7rem;
+  color: #dedede;
+}
+
+.sidebar .sidebar_name span {
+  color: #ff7a01;
+}
+
+.sidebar .sidebar-search {
+  padding: 0.5rem;
+  border: none;
+  background-color: #545454;
+  border-radius: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.sidebar .sidebar-search i {
+  color: #dedede;
+}
+
+.sidebar .sidebar-search input {
+  height: 20px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  text-align: center;
+  color: #dedede;
+}
+
+.sidebar .sidebar-context {
+  margin-top: 3rem;
+  padding: 0.5rem;
+  background-color: #121212;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.sidebar .sidebar-context h2 {
+  display: inline;
+  margin: 0;
+  color: #dedede;
+  font-size: 0.9rem;
+}
+
+.sidebar .sidebar-context i {
+  color: #dedede;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.sidebar .sidebar-context .play {
+  color: #7756fb;
+  font-size: 1.5rem;
+}
+
+.mainbar {
+  width: 100%;
+  padding: 2rem;
+}
+
+.mainbar .address {
+  margin-bottom: 2rem;
+}
+
+.mainbar .address h2 {
+  color: #dedede;
+  opacity: 0.5;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.mainbar .content {
+  color: #dedede;
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  row-gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.mainbar .content .heading {
+  font-size: 1.5rem;
+  resize: none;
+}
+
+.mainbar .content .discription {
+  font-size: 1rem;
+}
+
+.mainbar .content input {
+  padding: 18px;
+  border: none;
+  background-color: transparent;
+  color: #dedede;
+  font-weight: 600;
+  text-align: start;
+  letter-spacing: 2px;
+  border-radius: 12px;
+}
+
+.mainbar .content span {
+  padding: 18px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: none;
+  background-color: transparent;
+  resize: none;
+  color: #dedede;
+  font-weight: 600;
+  text-align: start;
+  overflow-y: hidden;
+  background-color: black;
+  border-radius: 12px;
+}
+
+.mainbar .content span:focus,
+.mainbar .content input:focus {
+  background-color: black;
+  outline: none;
+}
+
+.mainbar .button {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.mainbar .button button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  border: 2px solid #dedede;
+  padding: 10px;
+  border-radius: 100px;
+  background-color: transparent;
+  color: #dedede;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+.mainbar .button button i {
+  font-size: 1.2rem;
+}
+
+.mainbar .button button:active {
+  background-color: #dedede;
+  color: #121212;
+}
+
+.mainbar .delete {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.mainbar .delete button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  margin-bottom: 0.7rem;
+  border: none;
+  padding: 0;
+  border-radius: 100px;
+  background-color: transparent;
+  color: #ff7a01;
+}
+
+.mainbar .delete button:active {
+  background-color: transparent;
+  color: #dedede;
+}
+/*# sourceMappingURL=index.css.map */
