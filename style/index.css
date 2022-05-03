@@ -1,24 +1,94 @@
-body {
-  background-color: #121212;
+/* =============== css variables ================ */
+/*========== Colors ==========*/
+/*Color mode HSL(hue, saturation, lightness)*/
+/*========== Font and typography ==========*/
+/*========== Font weight ==========*/
+/*========== z index ==========*/
+/*========== responsive Font and typography ==========*/
+/* =================== base ===================================  */
+* {
   margin: 0;
   padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3 {
+  color: #d4d5d7;
+  font-weight: 600;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 0.938rem;
+  background-color: #191919;
+  color: #d4d5d7;
+}
+
+/* ================ reusable classes ========================  */
+.grid {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 1.5rem;
+}
+
+.section {
+  padding: 4rem 0 2rem;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  font-size: 0.813rem;
+  background-color: #6480bf;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  letter-spacing: 1px;
+  font-weight: 500;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.button:active {
+  background-color: #283a61;
 }
 
 .main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  padding: 0;
-  margin: 0;
   height: 100vh;
+  overflow: hidden;
 }
 
 .sidebar {
-  background-color: #1c1c1c;
+  background-color: #121212;
+  width: 25vw;
+  padding: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -29,23 +99,20 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  padding: 0.5rem 1rem;
+  row-gap: 2rem;
 }
 
 .sidebar .sidebar_name {
-  font-size: 1.7rem;
-  color: #dedede;
+  font-size: 1.5rem;
+  color: #d4d5d7;
 }
 
 .sidebar .sidebar_name span {
-  color: #ff7a01;
+  color: #6480bf;
 }
 
 .sidebar .sidebar-search {
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   border: none;
   background-color: #545454;
   border-radius: 12px;
@@ -65,7 +132,7 @@ body {
 }
 
 .sidebar .sidebar-search i {
-  color: #dedede;
+  color: #d4d5d7;
 }
 
 .sidebar .sidebar-search input {
@@ -74,11 +141,33 @@ body {
   border: none;
   outline: none;
   text-align: center;
-  color: #dedede;
+  color: #d4d5d7;
 }
 
-.sidebar .sidebar-context {
-  margin-top: 3rem;
+.sidebar .add {
+  width: 100%;
+}
+
+.sidebar .recent-tabs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 1rem;
+  overflow-y: auto;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.sidebar ::-webkit-scrollbar {
+  width: 0px;
+}
+
+.sidebar .tabs {
   padding: 0.5rem;
   background-color: #121212;
   width: 100%;
@@ -92,31 +181,39 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-column-gap: 0.5rem;
+          column-gap: 0.5rem;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-}
-
-.sidebar .sidebar-context h2 {
-  display: inline;
-  margin: 0;
-  color: #dedede;
-  font-size: 0.9rem;
-}
-
-.sidebar .sidebar-context i {
-  color: #dedede;
-  font-size: 1.1rem;
+  border-radius: 12px;
   cursor: pointer;
 }
 
-.sidebar .sidebar-context .play {
-  color: #7756fb;
+.sidebar .tabs span h2 {
+  display: inline;
+  color: #d4d5d7;
+  font-size: 0.9rem;
+}
+
+.sidebar .tabs i {
+  color: #6480bf;
   font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.sidebar .tabs span * {
+  margin: 5px 0;
+}
+
+.sidebar .tabs:focus {
+  background-color: #191919;
 }
 
 .mainbar {
-  width: 100%;
+  position: relative;
+  width: 80vw;
+  right: 0;
   padding: 2rem;
 }
 
@@ -125,121 +222,316 @@ body {
 }
 
 .mainbar .address h2 {
-  color: #dedede;
   opacity: 0.5;
   margin: 0;
   font-size: 1rem;
 }
 
-.mainbar .content {
-  color: #dedede;
+.mainbar .address .bars {
+  display: none;
+}
+
+.mainbar .mainbar-content {
+  height: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.mainbar .mainbar-content .content {
   width: 100%;
   display: -ms-grid;
   display: grid;
   row-gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
-.mainbar .content .heading {
+.mainbar .mainbar-content .content .heading {
   font-size: 1.5rem;
   resize: none;
 }
 
-.mainbar .content .discription {
+.mainbar .mainbar-content .content .discription {
   font-size: 1rem;
 }
 
-.mainbar .content input {
+.mainbar .mainbar-content .content input {
   padding: 18px;
   border: none;
   background-color: transparent;
-  color: #dedede;
+  color: #d4d5d7;
   font-weight: 600;
   text-align: start;
   letter-spacing: 2px;
   border-radius: 12px;
 }
 
-.mainbar .content span {
+.mainbar .mainbar-content .content ::-webkit-scrollbar {
+  width: 0px;
+}
+
+.mainbar .mainbar-content .content textarea {
+  height: 19rem;
+  resize: horizontal;
   padding: 18px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border: none;
   background-color: transparent;
   resize: none;
-  color: #dedede;
   font-weight: 600;
   text-align: start;
-  overflow-y: hidden;
-  background-color: black;
+  overflow-y: scroll;
   border-radius: 12px;
+  color: #d4d5d7;
 }
 
-.mainbar .content span:focus,
-.mainbar .content input:focus {
+.mainbar .mainbar-content .content textarea ::-webkit-scrollbar {
+  width: 0px;
+}
+
+.mainbar .mainbar-content .content textarea:focus,
+.mainbar .mainbar-content .content input:focus {
   background-color: black;
   outline: none;
 }
 
-.mainbar .button {
+.mainbar .mainbar-content .dlt-btn {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.mainbar .button button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  text-align: center;
-  border: 2px solid #dedede;
-  padding: 10px;
-  border-radius: 100px;
-  background-color: transparent;
-  color: #dedede;
-  display: -ms-grid;
-  display: grid;
-  place-content: center;
-  cursor: pointer;
-}
-
-.mainbar .button button i {
-  font-size: 1.2rem;
-}
-
-.mainbar .button button:active {
-  background-color: #dedede;
-  color: #121212;
-}
-
-.mainbar .delete {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
 }
 
-.mainbar .delete button {
+.mainbar .mainbar-content .dlt-btn .delete {
+  background-color: transparent;
+  color: #6480bf;
+  cursor: pointer;
+}
+
+.mainbar .mainbar-content .dlt-btn .delete i {
+  font-size: 1.4rem;
+}
+
+.mainbar .mainbar-content .dlt-btn .delete:active {
+  color: #283a61;
+}
+
+.mainbar .mainbar-content .data-div {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 1rem;
   text-align: center;
-  margin-bottom: 0.7rem;
-  border: none;
-  padding: 0;
-  border-radius: 100px;
-  background-color: transparent;
-  color: #ff7a01;
+  row-gap: 0.9rem;
 }
 
-.mainbar .delete button:active {
+.mainbar .mainbar-content .data-div .date {
+  color: #6480bf;
+}
+
+.mainbar .mainbar-content .data-div .add-btn {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.mainbar .mainbar-content .data-div .add-btn .edit {
+  border-radius: 100px;
+  border: 4px solid #d4d5d7;
+  color: #d4d5d7;
   background-color: transparent;
-  color: #dedede;
+  padding: 0.7rem;
+  font-size: 1.5rem;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+}
+
+.mainbar .mainbar-content .data-div .add-btn .edit:active {
+  border: 4px solid #6480bf;
+  color: #6480bf;
+}
+
+/*========== responsive Font and typography ==========*/
+@media screen and (max-width: 968px) {
+  .sidebar .sidebar-search {
+    padding: 0.5rem;
+  }
+  .sidebar .sidebar-search input {
+    width: 9rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .sidebar .sidebar-search {
+    padding: 0.5rem;
+  }
+  .sidebar .sidebar-search input {
+    width: 7rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .sidebar {
+    -webkit-transition: 0.9s;
+    transition: 0.9s;
+    width: 85%;
+    position: absolute;
+    /*--------------------<*/
+    top: 0;
+    height: 100vh;
+    left: -500px;
+    z-index: 100;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    overflow: hidden;
+  }
+  .sidebar .sidebar-search {
+    padding: 0.5rem 0.7rem;
+  }
+  .sidebar .sidebar-search input {
+    width: auto;
+  }
+  .mainbar .address .bars {
+    display: inline;
+  }
+  .mainbar .address {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-line-pack: center;
+        align-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .recent-tabs {
+    position: -webkit-sticky;
+    position: sticky;
+    /*--------------------<*/
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    row-gap: 1rem;
+    overflow-y: scroll;
+  }
+  .mainbar {
+    position: relative;
+    width: 100vw;
+    padding: 2rem;
+  }
+  .mainbar .mainbar-content .content input {
+    width: 18rem;
+  }
+  .mainbar .mainbar-content .content textarea {
+    width: auto;
+  }
+  .mainbar .mainbar-content .data-div .add-btn .edit {
+    font-size: 1rem;
+  }
+  .mainbar .mainbar-content .data-div .date {
+    font-size: 1rem;
+  }
+  .showcase {
+    left: 0;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .mainbar {
+    padding: 1rem;
+  }
+  .mainbar .address h2 {
+    font-size: 0.7rem;
+  }
+  .mainbar .mainbar-content .content .discription {
+    font-size: 0.7rem;
+    padding: 10px;
+    width: 15rem;
+  }
+  .mainbar .mainbar-content .content input {
+    width: 15rem;
+    padding: 10px;
+  }
+  .mainbar .mainbar-content .content .heading {
+    font-size: 1rem;
+  }
+  .mainbar .mainbar-content .data-div .add-btn .edit {
+    font-size: 0.7rem;
+    padding: 8px;
+  }
+  .mainbar .mainbar-content .content {
+    width: 100%;
+    display: -ms-grid;
+    display: grid;
+    row-gap: 1rem;
+  }
+  .mainbar .address {
+    margin-bottom: 1rem;
+  }
+  .button {
+    padding: 0;
+  }
+  .mainbar .mainbar-content .content {
+    row-gap: 1rem;
+    margin-bottom: 0rem;
+  }
+  .mainbar .address {
+    margin-bottom: 3rem;
+  }
+  .sidebar .add {
+    width: 100%;
+    padding: 0.5rem;
+  }
 }
 /*# sourceMappingURL=index.css.map */
