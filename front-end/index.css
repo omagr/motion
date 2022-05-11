@@ -206,7 +206,7 @@ body {
   margin: 5px 0;
 }
 
-.sidebar .tabs:focus {
+.sidebar .select-tab {
   background-color: #191919;
 }
 
