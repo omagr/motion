@@ -1,41 +1,63 @@
 /* =============== css variables ================ */
-$header-height: 3.5rem;
+$header-height: 2.5rem;
+
 /*========== Colors ==========*/
-/*Color mode HSL(hue, saturation, lightness)*/
-$blue-color: #6480bf;
-$blue-color-alt: #283a61;
-$orange-color: #ff7a01;
-$orange-color-alt: #663b23;
-$container-color: #121212;
-$container-alt-color: #545454;
+
 $body-color: #191919;
+$container-color: #121212;
+$container-minor-color: #545454;
 $content-color: #d4d5d7;
+
+$body-color-light: #b3b3b3;
+$container-color-light: #d4d5d7;
+$container-minor-color-light: #b3b3b3;
+$content-color-light: #191919;
+
+$orange-color: #ff7a01;
+$blue-color: #7756fd;
+
 /*========== Font and typography ==========*/
-$body-font: sans-serif;
+
+$font-family: "Harmattan", sans-serif;
 $h1-font-size: 1.5rem;
 $h2-font-size: 1.25rem;
 $h3-font-size: 1rem;
 $normal-font-size: 0.938rem;
 $small-font-size: 0.813rem;
 $smaller-font-size: 0.75rem;
+
 /*========== Font weight ==========*/
+
 $font-medium: 500;
 $font-semi-bold: 600;
+
 /*========== z index ==========*/
+
 $z-tooltip: 10;
 $z-fixed: 100;
 
 /*========== responsive Font and typography ==========*/
+
 @media screen and (min-width: 968px) {
-  $h1-font-size: 2.25rem;
-  $h2-font-size: 1.5rem;
-  $h3-font-size: 1.25rem;
-  $normal-font-size: 1rem;
-  $small-font-size: 0.875rem;
-  $smaller-font-size: 0.813rem;
+  $h1-font-size: 2.5rem;
+  $h2-font-size: 2rem;
+  $h3-font-size: 1.5rem;
+  $normal-font-size: 1.2rem;
+  $small-font-size: 1rem;
+  $smaller-font-size: 0.8rem;
+}
+
+@media screen and (max-width: 368px) {
+  $h1-font-size: 1rem;
+  $h2-font-size: 0.9rem;
+  $h3-font-size: 0.8rem;
+  $normal-font-size: 9rem;
+  $small-font-size: 0.6rem;
+  $smaller-font-size: 0.5rem;
 }
 
 /* =================== base ===================================  */
+
 * {
   margin: 0;
   padding: 0;
@@ -49,7 +71,6 @@ html {
 h1,
 h2,
 h3 {
-  color: $content-color;
   font-weight: $font-semi-bold;
 }
 
@@ -67,445 +88,396 @@ img {
 }
 
 body {
-  font-family: $body-font;
+  font-family: $font-family;
   font-size: $normal-font-size;
   background-color: $body-color;
   color: $content-color;
 }
 
-/* ================ reusable classes ========================  */
-.grid {
-  display: grid;
-  grid-gap: 1.5rem;
-}
+/* ================ css ========================  */
 
-.section {
-  padding: 4rem 0 2rem;
-}
-
-.button {
-  display: inline-block;
-  padding: 0.8rem 1.5rem;
-  font-size: $small-font-size;
-  background-color: $blue-color;
-  color: white;
-  border: none;
-  border-radius: 0.5rem;
-  align-items: center;
-  letter-spacing: 1px;
-  font-weight: $font-medium;
-  transition: 0.3s;
-  cursor: pointer;
-
-  &:active {
-    background-color: $blue-color-alt;
-  }
-}
-
-.main {
-  display: flex;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.sidebar {
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   background-color: $container-color;
-  width: 25vw;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  row-gap: 2rem;
+  z-index: $z-fixed;
+  border-bottom: 1px solid white;
+  user-select: none;
 
-  .sidebar_name {
-    font-size: $h1-font-size;
-    color: $content-color;
-
-    span {
-      color: $blue-color;
-    }
-  }
-
-  .sidebar-search {
-    padding: 0.5rem 1rem;
-    border: none;
-    background-color: $container-alt-color;
-    border-radius: 12px;
+  nav {
+    margin: 0 1rem;
+    height: $header-height;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-
-    i {
-      color: $content-color;
-    }
-
-    input {
-      height: 20px;
-      background-color: transparent;
-      border: none;
-      outline: none;
-      text-align: center;
-      color: $content-color;
-    }
-  }
-
-  .add {
-    width: 100%;
-  }
-
-  .recent-tabs {
-    display: flex;
-    flex-direction: column;
-    row-gap: 1rem;
-    overflow-y: auto;
-    flex-grow: 1;
-  }
-
-  ::-webkit-scrollbar {
-    width: 0px;
-  }
-
-  .tabs {
-    padding: 0.5rem;
-    background-color: $container-color;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    column-gap: 0.5rem;
     justify-content: space-between;
-    border-radius: 12px;
-    cursor: pointer;
+    align-items: center;
 
-    span h2 {
-      display: inline;
+    .nav_title {
+      cursor: pointer;
       color: $content-color;
 
-      font-size: 0.9rem;
-    }
-
-    i {
-      color: $blue-color;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    span * {
-      margin: 5px 0;
-    }
-
-    // &:hover {
-    //   background-color: $body-color;
-    // }
-  }
-  .select-tab {
-    background-color: $body-color;
-  }
-}
-
-.mainbar {
-  position: relative;
-  width: 80vw;
-  right: 0;
-  padding: 2rem;
-
-  .address {
-    margin-bottom: 2rem;
-
-    h2 {
-      opacity: 0.5;
-      margin: 0;
-      font-size: 1rem;
-    }
-
-    .bars {
-      display: none;
-    }
-  }
-
-  .mainbar-content {
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-
-    .content {
-      width: 100%;
-      display: grid;
-      row-gap: 1rem;
-      margin-bottom: 1rem;
-
-      .heading {
-        font-size: 1.5rem;
-        resize: none;
-      }
-
-      .discription {
-        font-size: 1rem;
-      }
-
-      input {
-        padding: 18px;
-        border: none;
-        background-color: transparent;
-        color: $content-color;
-        font-weight: 600;
-        text-align: start;
-        letter-spacing: 2px;
-        border-radius: 12px;
-      }
-
-      ::-webkit-scrollbar {
-        width: 0px;
-      }
-
-      textarea {
-        ::-webkit-scrollbar {
-          width: 0px;
-        }
-
-        height: 19rem;
-        resize: horizontal;
-        padding: 18px;
-        box-sizing: border-box;
-        border: none;
-        background-color: transparent;
-        resize: none;
-        font-weight: 600;
-        text-align: start;
-        overflow-y: scroll;
-        // background-color: black;
-        border-radius: 12px;
-        color: $content-color;
-      }
-
-      textarea:focus,
-      input:focus {
-        background-color: black;
-        outline: none;
+      &:active {
+        color: $blue-color;
       }
     }
 
-    .dlt-btn {
-      width: 100%;
+    .nav_list {
       display: flex;
       flex-direction: row;
+      align-items: center;
+      width: 100%;
       justify-content: flex-end;
 
-      .delete {
-        background-color: transparent;
-        color: $blue-color;
-        cursor: pointer;
+      li {
+        margin: 0 0.2rem;
 
-        i {
-          font-size: 1.4rem;
-        }
-
-        &:active {
-          color: $blue-color-alt;
-        }
-      }
-    }
-
-    .data-div {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      margin-top: 1rem;
-      text-align: center;
-      row-gap: 0.9rem;
-
-      .date {
-        color: $blue-color;
-      }
-
-      .add-btn {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-
-        .edit {
-          border-radius: 100px;
-          border: 4px solid $content-color;
+        a {
+          display: flex;
           color: $content-color;
-          background-color: transparent;
-          padding: 0.7rem;
-          font-size: $h1-font-size;
-          display: grid;
-          place-content: center;
 
           &:active {
-            border: 4px solid $blue-color;
             color: $blue-color;
           }
         }
       }
     }
-  }
-}
 
-/*========== responsive Font and typography ==========*/
-@media screen and (max-width: 968px) {
-  .sidebar {
-    .sidebar-search {
-      padding: 0.5rem;
+    .nav_open {
+      position: absolute;
+      background-color: $container-color;
+      top: 0;
+      right: -1300px;
+      width: 90%;
+      height: 100vh;
+      transition: 1s;
+      overflow-y: scroll;
 
-      input {
-        width: 9rem;
+      &::-webkit-scrollbar {
+        display: none;
       }
+
+      .nav_open_operations {
+        background-color: $container-color;
+        position: fixed;
+        z-index: 100;
+        width: 90%;
+
+        .nav_open_title {
+          margin: 1rem 0 0.5rem 0;
+          font-size: $h2-font-size;
+          display: flex;
+          flex-direction: row;
+          place-content: center;
+          column-gap: 0.4rem;
+
+          span {
+            color: $blue-color;
+          }
+        }
+
+        .nav_open_search {
+          border: none;
+          display: grid;
+          align-items: center;
+          justify-items: center;
+          margin-bottom: 1.5rem;
+
+          .nav_open_search_bar {
+            border: none;
+            width: 80%;
+            padding: 0.4rem 1rem;
+            border-radius: 12px;
+            background-color: $container-minor-color;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+            i {
+              font-size: $h2-font-size;
+              color: white;
+            }
+
+            input {
+              color: $content-color;
+              width: 100%;
+              height: 25px;
+              background-color: transparent;
+              border: none;
+              outline: none;
+              text-align: center;
+            }
+          }
+        }
+
+        .add_btn {
+          margin-bottom: 2rem;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          .button {
+            border-radius: 12px;
+            width: 75%;
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            font-size: $small-font-size;
+            background-color: $blue-color;
+            color: $content-color;
+            border: none;
+            align-items: center;
+            letter-spacing: 1.5px;
+            font-weight: $font-medium;
+            transition: 0.3s;
+            cursor: pointer;
+
+            &:active {
+              background-color: #583fbb;
+            }
+          }
+        }
+
+        .notes_count {
+          width: 100%;
+          padding-left: 1rem;
+          margin-bottom: 0.7rem;
+        }
+      }
+
+      .recent-notes {
+        margin-top: 18rem;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 1rem;
+        flex-grow: 1;
+
+        .note {
+          padding: 0.5rem;
+          background-color: $body-color;
+          width: 90%;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          column-gap: 1.5rem;
+          justify-content: flex-start;
+          border-radius: 12px;
+          cursor: pointer;
+
+          i {
+            color: $blue-color;
+            font-size: $h1-font-size;
+            cursor: pointer;
+          }
+
+          span {
+            display: inline-flex;
+            flex-direction: column;
+            row-gap: 0;
+
+            .note-title {
+              font-size: 1.2rem;
+              color: $content-color;
+            }
+
+            .note-body {
+              opacity: 0.7;
+            }
+
+            .note-update {
+              font-size: 0.9rem;
+              color: $blue-color;
+            }
+          }
+        }
+
+        .active_note {
+          i {
+            color: $orange-color;
+          }
+
+          span .note-update {
+            color: $orange-color;
+          }
+        }
+      }
+    }
+
+    .showcase {
+      right: 0;
     }
   }
 }
 
-@media screen and (max-width: 800px) {
-  .sidebar {
-    .sidebar-search {
-      padding: 0.5rem;
+.main {
+  position: relative;
+  overflow: hidden;
+  height: calc(100vh - 2.5rem);
+  margin-top: $header-height;
+  padding: 1rem 2rem;
 
-      input {
-        width: 7rem;
+  .note_address {
+    user-select: none;
+    margin-bottom: 2rem;
+
+    h2 {
+      opacity: 0.5;
+    }
+  }
+
+  .note_title {
+    margin-bottom: 2rem;
+
+    input {
+      width: 100%;
+      font-size: $h1-font-size + 0.2rem;
+      font-weight: 600;
+      text-align: start;
+      letter-spacing: 1.5px;
+      background-color: transparent;
+      color: $content-color;
+      border: none;
+      outline: none;
+      box-shadow: none;
+
+      &:focus {
+        border: none;
+        outline: none;
+        box-shadow: none;
       }
+    }
+  }
+
+  .note_body {
+    height: 70vh;
+
+    textarea {
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      // &::-webkit-scrollbar {
+      //   width: 1px;
+      // }
+      // &::-webkit-scrollbar-track {
+      //   background: $body-color;
+      // }
+      // &::-webkit-scrollbar-thumb {
+      //   background: black;
+      // }
+      width: 100%;
+      height: 100%;
+      font-size: $h3-font-size;
+      font-weight: 400;
+      text-align: start;
+      line-height: 1.7;
+      background-color: transparent;
+      border-radius: 8px;
+      color: $content-color;
+      border: none;
+      outline: none;
+      box-shadow: none;
+      resize: none;
+
+      &:focus {
+        border: none;
+        outline: none;
+        box-shadow: none;
+      }
+
     }
   }
 }
 
-@media screen and (max-width: 600px) {
-  .sidebar {
-    .sidebar-search {
-      padding: 0.5rem 0.7rem;
+.note_update {
+  user-select: none;
+  border-top: 1px solid white;
+  background-color: $container-color;
+  width: 100%;
+  padding: 0.4rem 0;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 
-      input {
-        width: auto;
-      }
-    }
+  h1 {
+    font-size: $h2-font-size;
+    color: $orange-color;
+  }
+}
 
-    transition: 0.9s;
-    width: 85%;
-    position: absolute;
-    /*--------------------<*/
-    top: 0;
-    height: 100vh;
-    left: -500px;
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: hidden;
+.ask_delete {
+  user-select: none;
+  border: 1px solid black;
+  border-radius: 18px;
+  background-color: $container-color;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  padding: 1rem 0.5rem;
+  display: none;
+  flex-direction: column;
+  row-gap: 0.5rem;
+  text-align: center;
+
+  h2 {
+    color: $blue-color;
   }
 
-  .mainbar .address .bars {
-    display: inline;
-  }
-
-  .mainbar .address {
+  .ask_delete_btns {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-content: center;
-    align-items: center;
-  }
+    justify-content: center;
+    column-gap: 1rem;
 
-  // bruhhh idk ye kese chll gya ki ek absoulate dive ke under if i want a scrlling div then put it posiition to the sticky, booom
-  .recent-tabs {
-    position: sticky;
-    /*--------------------<*/
-    display: flex;
-    flex-direction: column;
-    row-gap: 1rem;
-    overflow-y: scroll;
-  }
+    i {
+      font-size: $h1-font-size;
+      cursor: pointer;
 
-  .mainbar {
-    position: relative;
-    width: 100vw;
-    padding: 2rem;
-  }
-
-  .mainbar .mainbar-content .content input {
-    width: 18rem;
-  }
-
-  .mainbar .mainbar-content .content textarea {
-    width: auto;
-  }
-
-  .mainbar .mainbar-content .data-div .add-btn .edit {
-    font-size: 1rem;
-  }
-
-  .mainbar .mainbar-content .data-div .date {
-    font-size: 1rem;
-  }
-
-  .showcase {
-    left: 0;
+      &:active {
+        color: $blue-color;
+      }
+    }
   }
 }
 
-@media screen and (max-width: 350px) {
-  $h1-font-size: 1.5rem;
-  $h2-font-size: 1.2rem;
-  $h3-font-size: 1rem;
-  $normal-font-size: 0.7rem;
-  $small-font-size: 0.5rem;
+.ask_delete_show {
+  display: flex;
+}
 
-  .mainbar {
-    padding: 1rem;
+/*
+| =============================================================== |
+|                                                                 |
+|                          BREAK POINTS                           |
+|                                                                 |
+| =============================================================== |
+*/
+
+@media screen and (max-height: 700px) {
+  .main .note_body {
+    height: 60vh;
   }
+}
 
-  .mainbar .address h2 {
-    font-size: 0.7rem;
+@media screen and (min-width: 500px) {
+  .notes_count {
+    padding-left: 2rem !important;
   }
+}
 
-  .mainbar .mainbar-content .content .discription {
-    font-size: 0.7rem;
-    padding: 10px;
-    width: 15rem;
+@media screen and (min-width: 800px) {
+  .notes_count {
+    padding-left: 3rem !important;
   }
+}
 
-  .mainbar .mainbar-content .content input {
-    width: 15rem;
-    padding: 10px;
-  }
-
-  .mainbar .mainbar-content .content .heading {
-    font-size: 1rem;
-  }
-
-  .mainbar .mainbar-content .data-div .add-btn .edit {
-    font-size: 0.7rem;
-    padding: 8px;
-  }
-
-  .mainbar .mainbar-content .content {
-    width: 100%;
-    display: -ms-grid;
-    display: grid;
-    row-gap: 1rem;
-  }
-
-  .mainbar .address {
-    margin-bottom: 1rem;
-  }
-
-  .button {
-    padding: 0;
-  }
-
-  .mainbar .mainbar-content .content {
-    row-gap: 1rem;
-    margin-bottom: 0rem;
-  }
-
-  .mainbar .address {
-    margin-bottom: 3rem;
-  }
-
-  .sidebar .add {
-    width: 100%;
-    padding: 0.5rem;
+@media screen and (min-width: 1100px) {
+  .notes_count {
+    padding-left: 4rem !important;
   }
 }
