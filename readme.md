@@ -46,7 +46,7 @@
     <br>CSS
     </td>   
     <td align="Center" width="30%">  
-<a href="https://tailwindcss.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/tailwindcss-colored.svg" width="36" height="36" alt="TailwindCSS" /></a> 
+<a href="https://tailwindcss.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/tailwindcss-colored.svg" width="50" height="40" alt="TailwindCSS" /></a> 
   <br>Tailwind CSS
     </td>     
       </tr>
