@@ -45,8 +45,8 @@
  <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer" title="CSS3"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="50" height="40"/> </a> 
     <br>CSS
     </td>   
-    <td align="Center" width="30%">  
-<a href="https://tailwindcss.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/tailwindcss-colored.svg" width="50" height="40" alt="TailwindCSS" /></a> 
+    <td align="Center" width="30%">
+ <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer" title="CSS3"> <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/tailwindcss-colored.svg" alt="css3" width="50" height="40"/> </a> 
   <br>Tailwind CSS
     </td>     
       </tr>
